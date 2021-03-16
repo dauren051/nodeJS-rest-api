@@ -8,11 +8,24 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/create', async ( req, res) => {
-    const todo = new Todo({
-        title: req.body.title
-    })
-    await todo.save( )
-    res.status(201).json(todo || {})
+    if(req.body.title){
+        const todo = new Todo({
+            title: req.body.title,
+            description: req.body.description
+        })
+        await todo.save( )
+        res.status(201).json(todo || {})
+    }else{
+        res.status(400).json('Необходимо поле title!')
+    }
+})
+
+router.put('/update', async (req, res) => {
+    // if(){
+
+    // }else{
+
+    // }
 })
 
 // тут будет какой то роут
